@@ -3,8 +3,8 @@ dashboard_import:
   import_full_config: true
  
 substitutions:
-  name: "wmbus_reader_v2"
-  friendly_name: "wmbus_reader_v2"
+  name: "wmbus-reader-v2"
+  friendly_name: "wmbus-reader-v2"
   status_led: GPIO15
   
 esphome:
