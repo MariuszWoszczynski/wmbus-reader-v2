@@ -4,7 +4,7 @@ dashboard_import:
  
 substitutions:
   name: "wmbus-reader-v2"
-  friendly_name: "wmbus-reader-v2"
+  friendly_name: "wmbus reader v2"
   status_led: GPIO15
   
 esphome:
