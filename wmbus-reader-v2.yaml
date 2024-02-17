@@ -42,8 +42,8 @@ api:
 ota:
  
 wifi:
-  ssid: "Woszu_IoT"
-  password: "8181818181"
+  ssid: "XXX"
+  password: "XXX"
   power_save_mode: none
   fast_connect: true
   reboot_timeout: 10min
@@ -73,8 +73,8 @@ wmbus:
   mosi_pin: GPIO35
   clk_pin:  GPIO36 
   miso_pin: GPIO37
-  gdo2_pin: GPIO1 #GPIO33 # 1 w PCB E07v1
-  gdo0_pin: GPIO2 #GPIO21 # 2 w PCB E07v1
+  gdo2_pin: GPIO1 
+  gdo0_pin: GPIO2
   cs_pin:   GPIO34
   log_unknown: true
  
