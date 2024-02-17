@@ -1,0 +1,80 @@
+dashboard_import:
+  package_import_url: github://MariuszWoszczynski/WMBUS-reader/WMBUS-reader-v2.yaml@main
+  import_full_config: true
+ 
+substitutions:
+  name: "wmbus_reader_v2"
+  friendly_name: "wmbus_reader_v2"
+  status_led: GPIO15
+  
+esphome:
+  name: "${name}"
+  friendly_name: "${friendly_name}"
+  project:
+    name: esphome.wmbus_reader_v2
+    version: "1.0"
+ 
+esp32:
+  board: lolin_s2_mini
+  framework:
+    type: arduino
+ 
+external_components:
+  - source: github://SzczepanLeon/esphome-components@main
+    components: [ wmbus ]
+    refresh: 0d
+ 
+ 
+time:
+ - platform: sntp
+   id: time_sntp
+ 
+ 
+# Enable logging
+logger:
+  level: debug
+ 
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "D0KKR80TBX3z2sx+Pejf1BBJ/+jaj5dQZXNZuwD/s8k="
+ 
+ota:
+ 
+wifi:
+  ssid: "Woszu_IoT"
+  password: "8181818181"
+  power_save_mode: none
+  fast_connect: true
+  reboot_timeout: 10min
+#  static IP configuration (instead of data from the secret file)
+#  manual_ip:
+#    static_ip: 192.168.10.99
+#    gateway: 192.168.10.1
+#    subnet: 255.255.255.0
+ 
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "WMBUS Reader v2"
+#    password: "password_12345678"
+ 
+# Status LED for connection
+status_led:
+  pin:
+    # Blue LED
+    number: ${status_led}
+
+captive_portal:
+ 
+web_server: 
+  port: 80
+ 
+wmbus:
+  mosi_pin: GPIO35
+  clk_pin:  GPIO36 
+  miso_pin: GPIO37
+  gdo2_pin: GPIO1 #GPIO33 # 1 w PCB E07v1
+  gdo0_pin: GPIO2 #GPIO21 # 2 w PCB E07v1
+  cs_pin:   GPIO34
+  log_unknown: true
+ 
