@@ -44,9 +44,10 @@ ota:
 wifi:
   ssid: "XXX"
   password: "XXX"
-  power_save_mode: none
+  power_save_mode: LIGHT
   fast_connect: true
   reboot_timeout: 10min
+  output_power: 18dB
 #  static IP configuration (instead of data from the secret file)
 #  manual_ip:
 #    static_ip: 192.168.10.99
