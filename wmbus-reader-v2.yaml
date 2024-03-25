@@ -13,7 +13,9 @@ esphome:
   project:
     name: esphome.wmbus_reader_v2
     version: "1.0"
- 
+  # only for RPI 
+  compile_process_limit: 1
+  
 esp32:
   board: lolin_s2_mini
   framework:
@@ -79,3 +81,97 @@ wmbus:
   cs_pin:   GPIO34
   log_unknown: true
  
+
+text_sensor: 
+    # For Apator16-2 water meter please add also text sensor (for debug purposes):
+  - platform: wmbus                       
+    name: "Text debug for Apator 16-2"
+    #diagnostic info
+  - platform: wifi_info                   
+    ip_address:
+      name: 'IP Address'
+      icon: mdi:wifi
+    ssid:
+      name: 'Connected SSID'
+      icon: mdi:wifi-strength-2
+      
+sensor:
+    # Reports the WiFi signal strength/RSSI in dB
+  - platform: wifi_signal 
+    name: "WiFi Signal dB"
+    id: wifi_signal_db
+    update_interval: 60s
+    entity_category: "diagnostic"
+# first sensor (water)
+  - platform: wmbus
+    meter_id: 0x00000000
+    type: izar
+    add_prefix: false
+    lqi:
+      name: "My lqi"
+    rssi:
+      name: "My RSSI"
+    total_water_m3:
+      name: "My cold water"
+   #  filters:              #optional
+   #    - offset: 123.4567  #the difference between the indications of the radio overlay and the counter (if you have a used overlay)
+    last_month_total_water_m3:
+      name: "Last month total water"
+    current_month_total_water_l:
+      name: "Current month total water"
+    transmit_period_s:
+      name: "Transmit period [s]"
+    remaining_battery_life_y:
+      name: "Remaining battery life [Y]"
+    current_alarms:
+      name: "Current alarms"
+    previous_alarms:
+      name: "Previous alarms"
+  # second sensor (water)
+  - platform: wmbus
+    meter_id: 0x00000000
+    type: apator162
+    add_prefix: false
+    key: "00000000000000000000000000000000"
+    lqi:
+      name: "My lqi"
+    rssi:
+      name: "My RSSI"
+    total_water_m3:
+      name: "My cold water"
+  # third sensor (gas)
+  - platform: wmbus
+    meter_id: 0x00000000
+    type: unismart
+    add_prefix: false
+    key: "00000000000000000000000000000000"
+    lqi:
+      name: "My lqi"
+    rssi:
+      name: "My RSSI"
+    total_gas_m3:
+      name: "My gas"
+  # fourth sensor (electricity)
+  - platform: wmbus
+    meter_id: 0x00000000
+    type: amiplus
+    add_prefix: false
+    mode: T1C1
+    rssi:
+      name: "My RSSI"
+    total_energy_consumption_kwh:
+      name: "My consumption in kWh"
+      icon: "mdi:power-plug"
+    current_power_consumption_kw:
+      name: "My current power consumption in kW"
+    total_energy_production_kwh:
+      name: "My total energy production in kWh"
+    current_power_production_kw:
+      name: "My current power production in kW"
+    voltage_at_phase_1_v:
+      name: "My V1"
+    voltage_at_phase_2_v:
+      name: "My V2"
+    voltage_at_phase_3_v:
+      name: "My V3"
+  # more options on https://github.com/SzczepanLeon/esphome-components
