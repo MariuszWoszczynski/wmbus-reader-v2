@@ -42,6 +42,8 @@ api:
     key: "D0KKR80TBX3z2sx+Pejf1BBJ/+jaj5dQZXNZuwD/s8k="
  
 ota:
+  - platform: esphome
+
  
 wifi:
   ssid: "XXX"
