@@ -14,7 +14,7 @@ esphome:
     name: esphome.wmbus_reader_v2
     version: "1.0"
   # only for RPI 
-  compile_process_limit: 1
+  #compile_process_limit: 1
   
 esp32:
   board: lolin_s2_mini
@@ -81,13 +81,10 @@ wmbus:
   gdo2_pin: GPIO1 
   gdo0_pin: GPIO2
   cs_pin:   GPIO34
-  log_unknown: true
+#  log_unknown: true
  
 
 text_sensor: 
-    # For Apator16-2 water meter please add also text sensor (for debug purposes):
-  - platform: wmbus                       
-    name: "Text debug for Apator 16-2"
     #diagnostic info
   - platform: wifi_info                   
     ip_address:
