@@ -1,5 +1,5 @@
 dashboard_import:
-  package_import_url: github://MariuszWoszczynski/wmbus-reader-v2/wmbus-reader-v2.yaml@3.2.3
+  package_import_url: github://MariuszWoszczynski/wmbus-reader-v2/wmbus-reader-v2.yaml@main
   import_full_config: true
  
 substitutions:
@@ -22,7 +22,7 @@ esp32:
     type: arduino
  
 external_components:
-  - source: github://SzczepanLeon/esphome-components@main
+  - source: github://SzczepanLeon/esphome-components@3.2.3
     components: [ wmbus ]
     refresh: 0d
  
